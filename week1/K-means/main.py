@@ -161,6 +161,7 @@ def relation(n_k, maxIters, df_train):
     for i in range(1, n_k + 1):
         _, var_best, _ = train(i, maxIters, df_train,visualize=False)
         varSet.append(np.sum(var_best))
+    plt.ioff()
     plt.plot([i for i in range(1, n_k + 1)], varSet)
     plt.xlabel('k')
     plt.ylabel('variance')
@@ -175,7 +176,7 @@ if __name__ == '__main__':
     df_train, df_valid, df_test = Read(path)
     df_valid_test = df_valid[:, :-1]
     # Train
-    center_best, var_best, clusterSet_best = train(k, maxIters, df_train,visualize=True)
+    # center_best, var_best, clusterSet_best = train(k, maxIters, df_train,visualize=False)
     # Test
     #test(k, df_test, center_best, 'write',path,'K_means_test.csv','test_result.csv')
 
@@ -185,7 +186,7 @@ if __name__ == '__main__':
 
     # Bonus2
     n_k = 10
-    # relation(n_k, maxIters, df_train)
+    relation(n_k, maxIters, df_train)
 
 # 下标形式和多加一点一列存储下标
 # for循环用下标还是元素
